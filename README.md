@@ -1,5 +1,7 @@
 # learn-terraform-by-projects
 
+Using `terraform-provider-aws_5.10.0`
+
 ### Some basic terraform commands
 
 ```bash
