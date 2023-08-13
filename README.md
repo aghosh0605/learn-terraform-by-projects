@@ -18,4 +18,5 @@ terraform destroy #Destroy the configuration
 aws configure list #Shows current profile that is being used
 aws configure list-profiles  #Shows all profiles
 aws route53 list-hosted-zones  #Shows hsoted zones
+aws s3 ls #Shows bucket items
 ```
