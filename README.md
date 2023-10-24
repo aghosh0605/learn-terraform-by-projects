@@ -7,7 +7,7 @@ Using `terraform-provider-aws_5.10.0`
 ```bash
 terraform validate  #Validates the code for syntax errors
 terraform init  #Initializes the configuration
-terrraform plans #Check what changes will be made with your code
+terrraform plan #Check what changes will be made with your code
 terraform apply  #Apply the configuration
 terraform destroy #Destroy the configuration
 ```
