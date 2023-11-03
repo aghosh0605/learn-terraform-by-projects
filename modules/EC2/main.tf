@@ -1,6 +1,6 @@
 #Selecting provider for Terraform 
 provider "aws" {
-  region = "ap-south-1"   # Replace with your desired AWS region
+  region = var.region_name   # Replace with your desired AWS region
 }
 
 #Creating VPC to run the the webserver into it
@@ -15,7 +15,7 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "public" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.1.0/24"        #Configure Subnet within VPC
-  availability_zone = "ap-south-1a"
+  availability_zone = var.availability_zone
   map_public_ip_on_launch = true
 
    tags = {
@@ -55,7 +55,7 @@ resource "aws_instance" "web_server" {
   subnet_id = aws_subnet.public.id
 
   tags = {
-    Name = "Web Server Terraform"
+    Name = var.instance_name
   }
 }
 
@@ -96,9 +96,4 @@ resource "aws_eip" "web_server_eip" {
   network_interface = aws_network_interface.network_nic.id
   associate_with_private_ip = "10.0.1.100"
   # Specify the network interface ID if you have multiple instances
-}
-
-#Outputs the Elastic IP that was assigned to the specified EC2 instance
-output "public_ip" {
-  value = aws_eip.web_server_eip.public_ip
 }
